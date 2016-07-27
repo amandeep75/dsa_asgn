@@ -4,6 +4,8 @@ void main(){
 int i,n,min=0,max=0;
 printf("Provide the No.of entries:");
 scanf("%d",&n);
+if (n>0)
+{
 int age[n];
 for(i=0;i<n;i++){
 	printf("Provide Entry %d:\n",i+1);
@@ -13,7 +15,7 @@ for(i=0;i<n;i++){
         continue;
        }
     else
-        {printf("Error Encountered\n");
+        {printf("Error Encountered\n Seems Age entry inappropriate");
         exit(0);}
 }
 	min=age[0]; max=age[0];
@@ -25,4 +27,8 @@ for(i=1;i<n;i++){
 }
 printf("Max age is %d \n",max);
 printf("Min age is %d",min);
+}
+else
+    printf("error Encountered");
+    exit(0);
 }

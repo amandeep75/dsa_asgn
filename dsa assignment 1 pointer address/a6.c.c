@@ -1,9 +1,9 @@
 #include<stdio.h>
-int min(int*, int);
-int max(int*, int);
+#include<stdlib.h>
+void func(int*,int*,int*,int);
 void main()
 {
-int i,n,j=0,temp,x,*p,mino,maxo;
+int i,n,j=0,temp,x,*p,min,max;
 printf("Provide length of array:");
 scanf("%d",&n);
 p=&x;
@@ -13,32 +13,24 @@ for(i=0;i<n;i++)
 printf("Provide NOs. %d:\n",i+1);
 scanf("%d",(p+i));
 }
-
-mino=min(p,n);
-maxo=max(p,n);
-printf("MIN value is %d\n",(mino));
-printf("MAX value is %d",(maxo));
+func(p,&min,&max,n);
+printf("MIN value is %d\n",(min));
+printf("MAX value is %d",(max));
 }
-int min(int *p, int n)
+void func(int *p,int *min,int *max, int n)
 {
-int i=0,temp;
+int i,j,temp;
 temp = *p;
-for (i;i<n;i++)
-    {
-    if (temp > *(p+i))
-        temp = *(p+i);
-    }
-return temp;
-}
-
-int max(int *p, int n)
+for (i=0;i<n;i++)
 {
-int i=0,temp;
-temp=*p;
-for (i;i<n;i++)
+      for(j=0;j<n;j++)
+        if(*(p+i)<*(p+j))
     {
-    if (temp < *(p+i))
-        temp = *(p+i);
+        temp=*(p+i);
+            *(p+i)=*(p+j);
+            *(p+j)=temp;
     }
-return temp;
+}
+*min=*(p);
+*max=*(p+n-1);
 }

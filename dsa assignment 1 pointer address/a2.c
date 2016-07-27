@@ -3,6 +3,7 @@ void main(){
 int x,*age = &x,i,n,min=0,max=0;
 printf("Provide the No.of entries:");
 scanf("%d",&n);
+if(n>0){
 age = (int *) malloc(n*sizeof(int));
 for(i=0;i<n;i++){
 	printf("Provide Entry %d:\n",i+1);
@@ -24,4 +25,8 @@ for(i=1;i<n;i++){
 }
 printf("Max age is %d \n",max);
 printf("Min age is %d",min);
+}
+else
+    printf("Error encountered");
+    exit(0);
 }

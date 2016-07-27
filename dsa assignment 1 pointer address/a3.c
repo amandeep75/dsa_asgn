@@ -1,6 +1,6 @@
 #include<stdio.h>
 void main(){
-int i=0,j=0,n,*age,min=0,max=0;
+int i=0,j=0,n,*age,*min,*max;
 printf("Provide the No.of entries:");
 scanf("%d",&n);
 int x[n],temp=0;
@@ -8,13 +8,6 @@ age=x;
 for(i;i<n;i++){
 	printf("Provide Entry %d:\n",i+1);
 	scanf("%d",(age+i));
-	    if(age[i] > 0)
-       {
-        continue;
-       }
-    else
-        {printf("Error Encountered\n");
-        exit(0);}
 }
 for(i=0;i<n;i++){
 	for(j=0;j<n;j++)
@@ -27,6 +20,20 @@ for(i=0;i<n;i++){
            }
     }
 }
-printf("2nd Min age is %d \n", *(age+1));
-printf("2nd Max age is %d", *(age+n-2));
+i=1;
+min=(age+1);
+max=(age+n-2);
+while((*min)==*(age))
+{
+   i++;
+   min=(age+i);
+}
+i=1;
+while((*max)==*(age+n-1))
+{
+   i++;
+   max=(age+n-1-i);
+}
+printf("2nd Min No. is %d \n", *(min));
+printf("2nd Max NO. is %d", *(max));
 }
